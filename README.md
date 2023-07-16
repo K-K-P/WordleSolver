@@ -10,11 +10,15 @@ Another guess: procedure continues with another letters to be or not to be inclu
 
 prepare_data.py - this file provides the script useful for filtering the whole polish dictionary and providing only 5 - letters long words
 <br>
+<br>
 control.py - whole control and interface layer is focused here. Creating instance for each word looked through, inputting the word and whole "guessing" procesure is implemented here
+<br>
 <br>
 load_db.py - this file contaings the code for initializing the database for a session and for filtering the database
 <br>
+<br>
 main.py - main file for starting the app, implementing all the logic into one script
+<br>
 <br>
 db.txt - text file with 5 - letter long words
 
