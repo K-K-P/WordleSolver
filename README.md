@@ -12,3 +12,6 @@ prepare_data.py - this file provides the script useful for filtering the whole p
 control.py - whole control and interface layer is focused here. Creating instance for each word looked through, inputting the word and whole "guessing" procesure is implemented here
 load_db.py - this file contaings the code for initializing the database for a session and for filtering the database
 main.py - main file for starting the app, implementing all the logic into one script
+
+At this point, app doesn't solve the whole puzzle for the user. It is planned to develop the probability matrix (taking into account the frequency of presence of the each word's particular letter).
+When tested, app turned out to be a decent help - worst case scenario, I managed to guess the word at 5th attempt - it's all up to luck and user's gut. 
