@@ -8,4 +8,7 @@ eg. first guess: "bluza" - we did the first try in the "Literalnie" app and got 
 Now, "WordleSolver" will filter the database and provide the user the words which have "z" letter on the right spot (i.e. 4th) and do not contain letters b, l, u, a.
 Another guess: procedure continues with another letters to be or not to be included in search filter. 
 
-
+prepare_data.py - this file provides the script useful for filtering the whole polish dictionary and providing only 5 - letters long words
+control.py - whole control and interface layer is focused here. Creating instance for each word looked through, inputting the word and whole "guessing" procesure is implemented here
+load_db.py - this file contaings the code for initializing the database for a session and for filtering the database
+main.py - main file for starting the app, implementing all the logic into one script
