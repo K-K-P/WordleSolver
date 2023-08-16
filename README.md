@@ -1,4 +1,10 @@
 # WordleSolver
+
+UPDATE:
+
+Now, the program calculates the occurence frequency of particular characters of each word and
+gives user a hint on a word that should be (statistically) used in the next guessing iteration
+
 The application that helps in solving Literalnie / Wordle puzzles
 
 This particular version of the application helps the user to solve Literalnie's (PL version of Wordle) puzzles.
@@ -24,3 +30,5 @@ db.txt - text file with 5 - letter long words
 
 At this point, app doesn't solve the whole puzzle for the user. It is planned to develop the probability matrix (taking into account the frequency of presence of the each word's particular letter).
 When tested, app turned out to be a decent help - worst case scenario, I managed to guess the word at 5th attempt - it's all up to luck and user's gut. 
+
+
