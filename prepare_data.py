@@ -12,3 +12,7 @@ with open(r'.\Words_Base\slowa.txt', 'r', encoding='UTF-8') as input:
             if len(word) == WORD_LENGTH and type(word) == str:
                 db.write(word + '\n')
 
+
+
+
+

@@ -42,8 +42,43 @@ def filter_db(any_place_set: set, guessed_sofar: list, db: tuple, rejected: set)
     return temp_db
 
 
+def prepare_probability_table() -> dict:
+    """Preparing probability table - ran only once for the whole guessing process"""
+    probability_table: dict = dict()
+    with open(r'.\Words_Base\word_percentage.txt', 'r') as percentage:
+        raw_data: list = percentage.read().split(';')
+        for letter in raw_data:
+            if letter == '':
+                continue
+            letter = letter[:-1]
+            probability_table[letter[0]] = float(letter[1:])
+    return probability_table
+
+
+def sum_frequency(word: str, probability_table: dict):
+    """Calculate the sum frequency for the given word"""
+    frequency: float = 0
+    for char in word:
+        frequency += probability_table[char]
+    return frequency
+
+
+def most_probable(temp_db: list, probability_table: dict) -> str:
+    r"""Calculate the word's summary frequency and return the word with highest probability (highest frequency sum)"""
+    highest_freq = 0
+    most_prob_word = ''
+    for word in temp_db:
+        freq: float = sum_frequency(word, probability_table=probability_table)
+        if freq > highest_freq:
+            most_prob_word = word
+    return most_prob_word
+
+
+
 if __name__ == '__main__':
     # Testing example
     initial_db = init_db()
     filtered_db = filter_db({'a', 'b'}, ['_', 'l', '_', 'z', '_'], initial_db, {'u'})
     print(filtered_db)
+    table = prepare_probability_table()
+    print(sum_frequency('brawo', table))

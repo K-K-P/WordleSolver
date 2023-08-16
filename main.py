@@ -1,4 +1,7 @@
-"""This tool is aimed to provide help in solving Wordle / Literalnie game"""
+"""This tool is aimed to provide help in solving Wordle / Literalnie game
+
+Update: Now, the program calculates the occurence frequency of particular characters of each word and
+gives user a hint on a word that should be (statistically) used in the next guessing iteration"""
 
 import control
 import load_db
@@ -7,6 +10,7 @@ COUNTER: int = 6
 
 
 def main():
+    probability_table = load_db.prepare_probability_table()
     db = load_db.init_db()
     guess: list = ['_', '_', '_', '_', '_']
     any_place_set: set = set()
@@ -31,8 +35,10 @@ def main():
         print('What we have so far:', ''.join(guess), 'and letters to be placed randomly: ',
               ''.join(any_place_set), sep=' ')
         word_suggestions = load_db.filter_db(any_place_set, guess, db, rejected_all)
-        print('Here are the suggestions of the words you might want to use in your next try:')
-        print('\n'.join(word_suggestions))
+        most_probable = load_db.most_probable(word_suggestions, probability_table)
+        print(f'Here is the most probable word, that you should use this time: {most_probable}')
+        #print('Here are the suggestions of the words you might want to use in your next try:')
+        #print('\n'.join(word_suggestions))
     print('Sorry, this was Your last attempt. Please, try again')
 
 

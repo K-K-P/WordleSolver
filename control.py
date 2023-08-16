@@ -1,6 +1,6 @@
 """This file is aimed to provide input and validation functionalities"""
 
-INDEXES: tuple = (1, 2, 3, 4, 5)
+INDEXES: tuple = (1, 2, 3, 4, 5)  # benchmark for checking if the word's length is correct
 
 
 def input_word() -> str:
@@ -37,6 +37,7 @@ def guessing():
                 if pos_or_any.lower() not in ('r', 'i'):
                     print('[R]andom or [I]ndex?')
                     continue
+                # Providing the number of the letter guessed on the right place of the word:
                 try:
                     found_index = int(input('Please provide the index of the letter that you\'ve guessed\n'))
                 except ValueError:
