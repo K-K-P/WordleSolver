@@ -16,7 +16,8 @@ def init_db():
 def filter_db(any_place_set: set, guessed_sofar: list, db: tuple, rejected: set):
     temp_db: list = []
     if not any_place_set and ''.join(guessed_sofar) == '_____':
-        return db
+        for word_tuple in db:
+            temp_db.append(word_tuple[0])
     for word_tuple in db:
         word = word_tuple[0]
         word_set = word_tuple[1]
@@ -58,13 +59,15 @@ def prepare_probability_table() -> dict:
 def sum_frequency(word: str, probability_table: dict):
     """Calculate the sum frequency for the given word"""
     frequency: float = 0
+    print(word)
     for char in word:
+        print(char)
         frequency += probability_table[char]
     return frequency
 
 
 def most_probable(temp_db: list, probability_table: dict) -> str:
-    r"""Calculate the word's summary frequency and return the word with highest probability (highest frequency sum)"""
+    """Calculate the word's summary frequency and return the word with highest probability (highest frequency sum)"""
     highest_freq = 0
     most_prob_word = ''
     for word in temp_db:
@@ -72,7 +75,6 @@ def most_probable(temp_db: list, probability_table: dict) -> str:
         if freq > highest_freq:
             most_prob_word = word
     return most_prob_word
-
 
 
 if __name__ == '__main__':
